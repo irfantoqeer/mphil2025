@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPhil Thesis Defense - Hassan Raza</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 2rem 3rem;
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            animation: fadeIn 0.5s ease-in-out;
+            border-top: 4px solid #1e3a8a;
+        }
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1e3a8a; /* Dark Blue */
+            padding-bottom: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        .slide-content {
+            flex-grow: 1;
+        }
+        ul {
+            list-style-position: inside;
+        }
+        li {
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            color: #374151;
+        }
+        strong {
+            color: #1e3a8a;
+        }
+        .nav-button {
+            background-color: #2563eb;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .nav-button:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .nav-button:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .placeholder-img {
+            border: 2px dashed #d1d5db;
+            background-color: #f9fafb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #6b7280;
+            font-weight: 500;
+        }
+        .footer {
+            font-size: 0.8rem;
+            color: #6b7280;
+            text-align: right;
+            padding-top: 1rem;
+            border-top: 1px solid #e5e7eb;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-4">
+
+    <div id="presentation-container" class="w-full max-w-6xl aspect-[16/9] relative">
+
+        <!-- Slide 1: Title -->
+        <div class="slide active">
+            <div class="m-auto text-center">
+                <p class="text-2xl text-gray-600 mb-4">MPhil Thesis Defense</p>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Facile Synthesis of Ni-ZnFe<sub>2</sub>O<sub>4</sub> Nanocomposites for Photocatalytic Remediation of Chromium-Contaminated Water
+
+
+</h1>
+                <p class="text-2xl text-blue-700 font-semibold mt-10 mb-2">Presenter: Hassan Raza</p>
+                <p class="text-xl text-gray-700">Supervisor: Dr. Irfan Toqeer</p>
+                <div class="mt-10 text-lg text-gray-500">
+                    <p>Department of Physics</p>
+                    <p>Riphah International University Faisalabad</p>
+                    <p class="mt-4">July 12, 2025</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: Outline -->
+        <div class="slide">
+            <h2 class="slide-title">Presentation Outline</h2>
+            <div class="slide-content text-lg">
+                <ol class="list-decimal list-inside columns-2 gap-x-8 space-y-2">
+                    <li>Introduction</li>
+                    <li>Problem Statement & Chromium Contamination</li>
+                    <li>Research Objectives</li>
+                    <li>Literature Review</li>
+                    <li>Materials & Methodology</li>
+                    <li>Synthesis Procedure</li>
+                    <li>Characterization Techniques</li>
+                    <li>Results & Discussion</li>
+                    <li>Comparative Analysis</li>
+                    <li>Key Findings</li>
+                    <li>Photocatalytic Mechanism</li>
+                    <li>Applications & Significance</li>
+                    <li>Conclusions</li>
+                    <li>Future Work & Recommendations</li>
+                    <li>Acknowledgments</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 3: Introduction -->
+        <div class="slide">
+            <h2 class="slide-title">Introduction</h2>
+            <div class="slide-content flex items-center justify-center text-center">
+                <div class="max-w-3xl space-y-6">
+                    <p class="text-2xl">An overview of water contamination and the role of advanced nanomaterials in environmental remediation.</p>
+                    <p class="text-2xl p-4 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg"><strong>Focus:</strong> Chromium (VI) pollution and the development of innovative nanocomposite catalysts for its removal.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Problem Statement -->
+        <div class="slide">
+            <h2 class="slide-title">Problem Statement: Chromium Contamination</h2>
+            <div class="slide-content flex items-center justify-center">
+                <ul class="list-disc space-y-6 text-2xl max-w-3xl">
+                    <li>Chromium (VI) is a <strong>hazardous and carcinogenic</strong> pollutant commonly found in industrial wastewater.</li>
+                    <li>It is <strong>difficult to remove</strong> by conventional water treatment methods, especially at low concentrations.</li>
+                    <li>There is a pressing need for <strong>efficient, cost-effective, and environmentally friendly</strong> remediation technologies.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Research Objectives -->
+        <div class="slide">
+            <h2 class="slide-title">Research Objectives</h2>
+            <div class="slide-content flex flex-col justify-center space-y-6">
+                <ol class="list-decimal text-xl space-y-4 max-w-4xl mx-auto">
+                    <li>To synthesize Ni-ZnFe₂O₄ nanoparticles with enhanced properties for catalytic remediation.</li>
+                    <li>To investigate the effect of synthesis conditions on nanoparticle characteristics and catalytic activity.</li>
+                    <li>To evaluate the efficiency of Ni-ZnFe₂O₄ nanoparticles in reducing Cr(VI) ions in contaminated water.</li>
+                </ol>
+                <div class="p-4 bg-gray-100 rounded-lg max-w-4xl mx-auto">
+                    <h3 class="font-semibold text-xl text-blue-800">Overall Research Aim:</h3>
+                    <p class="text-lg mt-2">To develop nanocomposite ferrites with high magnetic storage capacity, high electron storage capacity, and superior photocatalytic removal capability for chromium remediation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Literature Review -->
+        <div class="slide">
+            <h2 class="slide-title">Literature Review Highlights</h2>
+            <div class="slide-content text-lg grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-4 bg-red-50 rounded-lg">
+                    <h3 class="font-semibold text-red-800">Conventional Methods & Limitations</h3>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Methods: Membrane filtration, chemical precipitation, ion exchange.</li>
+                        <li>Limitations: High cost, secondary waste, ineffective at low concentrations.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-green-50 rounded-lg">
+                    <h3 class="font-semibold text-green-800">Magnetic Ferrites: A Promising Solution</h3>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>High surface area, stability, and magnetic separability for reuse.</li>
+                        <li>Excellent candidates for photocatalysis.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold text-blue-800">Synthesis Approaches</h3>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Various methods exist: Hydrothermal, combustion, sol-gel.</li>
+                        <li><strong>Co-precipitation chosen for this study:</strong> Simple, cost-effective, produces nano-sized particles.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-yellow-50 rounded-lg">
+                    <h3 class="font-semibold text-yellow-800">Research Gaps</h3>
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Optimization of the Zn/Ni ratio for maximum efficiency.</li>
+                        <li>Long-term stability and recycling efficiency studies are needed.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Slide 7: Materials & Methodology -->
+        <div class="slide">
+            <h2 class="slide-title">Materials & Methodology</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                <div class="text-lg space-y-4">
+                    <h3 class="font-semibold text-xl mb-2">Synthesis Method</h3>
+                    <ul class="list-disc pl-5">
+                        <li><strong>Co-precipitation</strong> synthesis of Ni-ZnFe₂O₄ nanoparticles.</li>
+                        <li>Three sample compositions (S1–S3) with varied Ni/Zn ratios.</li>
+                        <li>pH controlled precipitation (pH 10-11) using NaOH.</li>
+                        <li>Final thermal treatment at 200°C.</li>
+                    </ul>
+                </div>
+                <div class="text-lg p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-semibold text-xl mb-2">Reagents Used</h3>
+                    <ul class="list-none space-y-1">
+                        <li>Ni(NO₃)₂·6H₂O, 99.52% (Sigma Aldrich)</li>
+                        <li>Zn(NO₃)₂, 99.89% (Sigma Aldrich)</li>
+                        <li>Fe(NO₃)₂, 97.5% (Sigma Aldrich)</li>
+                        <li>NaOH (for pH adjustment)</li>
+                        <li>Deionized water</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Synthesis Procedure -->
+        <div class="slide">
+            <h2 class="slide-title">Synthesis Procedure</h2>
+            <div class="slide-content flex items-center justify-center">
+                <ol class="list-decimal text-xl space-y-4 max-w-3xl border-l-4 border-blue-600 pl-6 py-4">
+                    <li>Dissolve Ni(NO₃)₂, Zn(NO₃)₂, and Fe(NO₃)₂ separately in deionized water.</li>
+                    <li>Combine solutions and stir vigorously at 700 rpm.</li>
+                    <li>Add 1M NaOH dropwise until a pH of 10-11 is reached to form a precipitate.</li>
+                    <li>Allow the precipitate to settle and filter 5 times at 2-hour intervals to remove impurities.</li>
+                    <li>Dry the precipitate in an oven at 200°C for 1 hour.</li>
+                    <li>Grind the dried powder and calcinate at 200°C for 1 hour to obtain the final nanocomposite.</li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 9: Characterization Techniques -->
+        <div class="slide">
+            <h2 class="slide-title">Characterization Techniques</h2>
+            <div class="slide-content grid grid-cols-2 gap-6 text-lg">
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-bold text-blue-800">X-ray Diffraction (XRD)</h3>
+                    <p>Phase identification, crystallinity, particle size calculation, and lattice parameters.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-bold text-blue-800">FTIR Spectroscopy</h3>
+                    <p>Functional group identification, metal-oxygen bond vibrations, and surface chemistry.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-bold text-blue-800">UV-Visible Spectroscopy</h3>
+                    <p>Optical properties, absorption spectra, band gap determination, and quantifying chromium removal.</p>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-bold text-blue-800">Scanning Electron Microscopy (SEM)</h3>
+                    <p>Surface morphology, particle size and distribution, and structural homogeneity.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 10: XRD Analysis -->
+        <div class="slide">
+            <h2 class="slide-title">XRD Analysis: Structural Properties</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg space-y-4">
+                    <p>XRD patterns show sharp peaks, confirming a well-defined <strong>cubic spinel phase</strong>.</p>
+                    <p><strong>Characteristic peaks:</strong> (220), (311), (400), (422), (110), (440).</p>
+                    <table class="w-full text-left mt-4 border">
+                        <thead class="bg-gray-100"><tr><th class="p-2 border">Sample</th><th class="p-2 border">Particle Size (Scherrer Eq.)</th></tr></thead>
+                        <tbody>
+                            <tr><td class="p-2 border">S1</td><td class="p-2 border">64.1 nm</td></tr>
+                            <tr><td class="p-2 border">S2</td><td class="p-2 border">43.6 nm</td></tr>
+                            <tr><td class="p-2 border">S3</td><td class="p-2 border">44.1 nm</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="placeholder-img w-full h-64 md:h-full">XRD Chart Placeholder</div>
+            </div>
+        </div>
+
+        <!-- Slide 11: FTIR Analysis -->
+        <div class="slide">
+            <h2 class="slide-title">FTIR Spectroscopy: Functional Groups</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                 <div class="text-lg space-y-4">
+                    <p>FTIR confirms the successful formation of the spinel ferrite structure.</p>
+                     <p><strong>Key Vibrational Bands:</strong></p>
+                    <ul class="list-disc pl-5">
+                        <li><strong>590-430 cm⁻¹:</strong> Strong vibrations corresponding to Fe-O bonds in tetrahedral and octahedral sites.</li>
+                        <li><strong>3400-3600 cm⁻¹:</strong> Broad peak from surface hydroxyl (-OH) groups.</li>
+                        <li><strong>1300-1400 cm⁻¹:</strong> Minor peaks indicating some nitrate residues (O-NO₂).</li>
+                    </ul>
+                </div>
+                <div class="placeholder-img w-full h-64 md:h-full">FTIR Chart Placeholder</div>
+            </div>
+        </div>
+
+        <!-- Slide 12: UV-Vis Analysis -->
+        <div class="slide">
+            <h2 class="slide-title">UV-Vis Spectroscopy: Optical Properties</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg space-y-4">
+                    <p>Absorption peaks were observed between <strong>246–319 nm</strong>.</p>
+                    <p>A <strong>blue shift</strong> was observed with higher Ni content, indicating changes in particle size and electronic structure.</p>
+                    <table class="w-full text-left mt-4 border">
+                        <thead class="bg-gray-100"><tr><th class="p-2 border">Sample</th><th class="p-2 border">Band Gap (eV)</th></tr></thead>
+                        <tbody>
+                            <tr><td class="p-2 border">S1</td><td class="p-2 border">3.17 eV</td></tr>
+                            <tr><td class="p-2 border">S2</td><td class="p-2 border">3.17 eV</td></tr>
+                            <tr><td class="p-2 border">S3</td><td class="p-2 border">2.91 eV</td></tr>
+                        </tbody>
+                    </table>
+                    <p class="mt-2 p-2 bg-yellow-50 rounded-md">The lower band gap of S3 indicates enhanced light absorption, potentially improving photocatalytic efficiency.</p>
+                </div>
+                <div class="placeholder-img w-full h-64 md:h-full">UV-Vis Absorption Spectra Placeholder</div>
+            </div>
+        </div>
+
+        <<!-- Slide 13: SEM Analysis -->
+<div class="slide">
+    <h2 class="slide-title">SEM Analysis: Morphology</h2>
+    <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="text-lg space-y-4">
+            <p>Surface morphology reveals a <strong>homogeneous distribution</strong> of nanoparticles.</p>
+            <p>Particle size ranges from <strong>20-65 nm</strong>, confirming nano-scale synthesis.</p>
+            <p>Slight agglomeration is observed due to magnetic interactions between particles.</p>
+            <p class="mt-2 p-2 bg-green-50 rounded-md"><strong>Key Observation:</strong> The smaller particle size of sample S3 (~44 nm) correlates with higher photocatalytic efficiency due to an increased surface-area-to-volume ratio.</p>
+        </div>
+        <div>
+            <img src="semh.png" alt="SEM image of nanoparticles" class="w-full h-auto rounded shadow">
+        </div>
+    </div>
+</div>
+
+
+        <!-- Slide 14: Photocatalytic Setup -->
+        <div class="slide">
+            <h2 class="slide-title">Photocatalytic Performance: Experimental Setup</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg space-y-4">
+                    <h3 class="font-semibold text-xl mb-2">Process</h3>
+                    <p>Industrial dye wastewater was mixed with the Ni-ZnFe₂O₄ nanocomposite and irradiated with visible light.</p>
+                    <h3 class="font-semibold text-xl mt-4 mb-2">Optimization Parameters</h3>
+                     <table class="w-full text-left border">
+                        <thead class="bg-gray-100"><tr><th class="p-2 border">Parameter</th><th class="p-2 border">Range</th><th class="p-2 border">Optimal Value</th></tr></thead>
+                        <tbody>
+                            <tr><td class="p-2 border">pH</td><td class="p-2 border">2-8</td><td class="p-2 border">3</td></tr>
+                            <tr><td class="p-2 border">Catalyst Dose</td><td class="p-2 border">0.05-0.30g/50mL</td><td class="p-2 border">0.25g/50mL</td></tr>
+                            <tr><td class="p-2 border">Contact Time</td><td class="p-2 border">20-180 min</td><td class="p-2 border">120 min</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="placeholder-img w-full h-64 md:h-full">Experiment Flowchart Placeholder</div>
+            </div>
+        </div>
+
+        <!-- Slide 15: Photocatalytic Results -->
+        <div class="slide">
+            <h2 class="slide-title">Photocatalytic Results: Chromium Removal Efficiency</h2>
+             <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg space-y-4">
+                    <p>All samples were tested on industrial dye wastewater under optimal conditions.</p>
+                    <p>The enhanced efficiency of S3 is attributed to its smaller particle size and higher surface area.</p>
+                    <p>All samples showed excellent stability and potential for reusability.</p>
+                    <div class="p-4 bg-green-100 border-l-4 border-green-600 rounded-r-lg mt-4">
+                        <p class="text-xl font-bold">Best Removal Efficiency:</p>
+                        <p class="text-4xl font-bold text-green-700">87.9%</p>
+                        <p>Achieved by <strong>Sample S3</strong> under optimal conditions.</p>
+                    </div>
+                </div>
+                <div class="placeholder-img w-full h-64 md:h-full">Cr(VI) Removal Efficiency Chart Placeholder</div>
+            </div>
+        </div>
+        
+        <!-- Slide 16: Comparative Analysis -->
+        <div class="slide">
+            <h2 class="slide-title">Comparative Analysis: Effect of Ni/Zn Ratio</h2>
+            <div class="slide-content flex flex-col space-y-4">
+                <table class="w-full text-left border text-lg">
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-2 border">Sample</th>
+                            <th class="p-2 border">Ni/Zn Ratio</th>
+                            <th class="p-2 border">Particle Size (nm)</th>
+                            <th class="p-2 border">Efficiency (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="p-2 border">S1</td><td class="p-2 border">High/Low</td><td class="p-2 border">64.10</td><td class="p-2 border">73.4</td></tr>
+                        <tr><td class="p-2 border">S2</td><td class="p-2 border">Medium/Medium</td><td class="p-2 border">43.61</td><td class="p-2 border">81.2</td></tr>
+                        <tr><td class="p-2 border font-bold bg-green-50">S3</td><td class="p-2 border font-bold bg-green-50">Low/High</td><td class="p-2 border font-bold bg-green-50">44.13</td><td class="p-2 border font-bold bg-green-50">87.9</td></tr>
+                    </tbody>
+                </table>
+                <p class="text-lg p-2 bg-blue-50 rounded-md"><strong>Structure-Property Relationship:</strong> Smaller crystallite size (S3: 44.13 nm) provides higher surface area and more active sites, enhancing the photocatalytic performance for Cr(VI) reduction.</p>
+                <div class="flex-grow grid grid-cols-2 gap-4">
+                    <div class="placeholder-img w-full h-full">Efficiency vs Zn Content Chart</div>
+                    <div class="placeholder-img w-full h-full">Removal vs Contact Time Chart</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 17: Key Findings -->
+        <div class="slide">
+            <h2 class="slide-title">Key Findings</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="text-lg space-y-4">
+                    <ul class="list-disc pl-5 space-y-3">
+                        <li>Ni-ZnFe₂O₄ nanocomposites were successfully synthesized and confirmed by all analyses.</li>
+                        <li>The optimal Zn/Ni ratio is critical for performance, with S3 exhibiting the best efficiency.</li>
+                        <li>Achieved <strong>>87% Cr(VI) removal</strong> under optimal conditions (pH 3, 120 min).</li>
+                        <li>A smaller particle size (~44 nm) correlated directly with higher photocatalytic efficiency.</li>
+                    </ul>
+                </div>
+                <div class="text-lg p-4 bg-gray-50 rounded-lg space-y-4">
+                    <div>
+                        <h3 class="font-bold text-blue-800">Structural Achievements</h3>
+                        <p>Cubic spinel structure confirmed via XRD. Fe-O bonding verified by FTIR. Particle size control (44-64 nm) was demonstrated.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-blue-800">Practical Benefits</h3>
+                        <p>The nanocomposites are stable, magnetic, and reusable, offering a low-cost solution for industrial wastewater treatment.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 18: Photocatalytic Mechanism -->
+        <div class="slide">
+            <h2 class="slide-title">Photocatalytic Mechanism</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-lg space-y-3">
+                    <ol class="list-decimal pl-5 space-y-2">
+                        <li><strong>Light Absorption:</strong> Ni-ZnFe₂O₄ absorbs visible light, generating electron-hole (e⁻/h⁺) pairs.</li>
+                        <li><strong>Reduction of Cr(VI):</strong> Photogenerated electrons (e⁻) reduce toxic Cr⁶⁺ to the less toxic Cr³⁺. <br><code class="text-sm bg-gray-200 p-1 rounded">Cr⁶⁺ + 3e⁻ → Cr³⁺</code></li>
+                        <li><strong>Radical Formation:</strong> Holes (h⁺) react with H₂O to form hydroxyl radicals (•OH). Electrons also react with O₂ to form superoxide radicals (O₂•⁻). These highly reactive species degrade organic pollutants. <br><code class="text-sm bg-gray-200 p-1 rounded">H₂O + h⁺ → •OH + H⁺</code></li>
+                    </ol>
+                </div>
+                <div class="placeholder-img w-full h-64 md:h-full">Mechanism Diagram Placeholder</div>
+            </div>
+        </div>
+
+        <!-- Slide 19: Applications & Significance -->
+        <div class="slide">
+            <h2 class="slide-title">Applications and Significance</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="text-lg space-y-3">
+                    <h3 class="font-bold text-xl">Industrial Wastewater Treatment</h3>
+                    <ul class="list-disc pl-5">
+                        <li>Textile industry (dye effluent)</li>
+                        <li>Tannery waste (high chromium)</li>
+                        <li>Electroplating (metal ion removal)</li>
+                    </ul>
+                    <h3 class="font-bold text-xl mt-4">Potential for Multiple Contaminants</h3>
+                    <p>Effective for Chromium (VI), with potential for Lead (Pb) and Arsenic (As) removal.</p>
+                </div>
+                <div class="text-lg p-4 bg-green-50 rounded-lg space-y-3">
+                    <h3 class="font-bold text-xl text-green-800">Key Significance</h3>
+                    <ul class="list-disc pl-5">
+                        <li>A cost-effective alternative to conventional treatment methods.</li>
+                        <li>Environmentally sustainable approach using visible light.</li>
+                        <li>Contributes to UN Sustainable Development Goal #6: Clean Water and Sanitation.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 20: Conclusions -->
+        <div class="slide">
+            <h2 class="slide-title">Conclusions</h2>
+            <div class="slide-content flex items-center justify-center text-center">
+                 <div class="max-w-4xl space-y-6">
+                    <p class="text-2xl">Ni-ZnFe₂O₄ nanocomposites are efficient, scalable photocatalysts for Cr(VI) removal.</p>
+                    <p class="text-xl">Structural and functional integrity were confirmed, and the best efficacy was achieved with a controlled Zn/Ni ratio and smaller particle size.</p>
+                    <div class="p-6 bg-blue-100 rounded-lg mt-8">
+                        <h3 class="text-xl font-bold text-blue-800">Key Achievement</h3>
+                        <p class="text-2xl mt-2">Successfully developed a low-cost, reusable nanocatalyst for the efficient photocatalytic remediation of hazardous hexavalent chromium from wastewater.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 21: Future Work -->
+        <div class="slide">
+            <h2 class="slide-title">Future Work & Recommendations</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-6 text-lg">
+                <div>
+                    <h3 class="font-bold text-xl mb-2">Research Directions</h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Investigate surface functionalization to enhance selective adsorption.</li>
+                        <li>Further optimize the Zn/Ni ratio for maximum efficiency.</li>
+                        <li>Conduct long-term stability and reusability studies (>10 cycles).</li>
+                        <li>Test efficacy for other heavy metals and complex industrial effluents.</li>
+                    </ul>
+                </div>
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-bold text-xl mb-2">Practical Applications</h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Explore pilot-scale implementation for industrial use.</li>
+                        <li>Develop integrated water treatment systems combining Ni-ZnFe₂O₄ with other technologies for comprehensive pollution control.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 22: Acknowledgments -->
+        <div class="slide">
+            <h2 class="slide-title">Acknowledgments</h2>
+            <div class="slide-content grid grid-cols-1 md:grid-cols-2 gap-8 text-lg">
+                <div>
+                    <h3 class="font-bold text-xl mb-2">Academic & Research Support</h3>
+                    <ul class="list-disc pl-5">
+                        <li>Supervisor: Dr. Irfan Toqeer</li>
+                        <li>Committee Members: Dr. Muhammad Afzaal</li>
+                        <li>Department Head: Prof. Dr. Abdul Ghuffar</li>
+                        <li>Lab Fellows</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-xl mb-2"> Personal Support</h3>
+                    <ul class="list-disc pl-5">
+                       
+                        <li>My family, friends, and colleagues for their unwavering support and encouragement.</li>
+                    </ul>
+                </div>
+                 <div class="col-span-2 text-center mt-8">
+                    <h2 class="text-5xl font-bold text-gray-800">Thank You</h2>
+                    <p class="text-3xl text-blue-700 font-semibold mt-4">Questions?</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Navigation -->
+    <div class="flex items-center justify-between w-full max-w-6xl mt-4">
+        <button id="prevBtn" class="nav-button">
+            &larr; Previous
+        </button>
+        <div id="slide-counter" class="text-lg font-semibold text-gray-700">
+            Slide 1 / 22
+        </div>
+        <button id="nextBtn" class="nav-button">
+            Next &rarr;
+        </button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideCounter = document.getElementById('slide-counter');
+        let currentSlide = 0;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            slideCounter.textContent = `Slide ${n + 1} / ${slides.length}`;
+            prevBtn.disabled = n === 0;
+            nextBtn.disabled = n === slides.length - 1;
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            else if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        showSlide(currentSlide);
+    </script>
+
+</body>
+</html>
