@@ -1,0 +1,1385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPhil Thesis Defense: Ni-Zn Ferrite Nanocomposites</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .slides {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1);
+            height: 100%;
+        }
+        
+        .slide {
+            min-width: 100vw;
+            height: 100%;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow-y: auto;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .slide-header {
+            border-bottom: 3px solid #1a2a6c;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .slide-title {
+            color: #1a2a6c;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .slide-subtitle {
+            color: #b21f1f;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+        
+        .slide-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px 0;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .figure-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
+        }
+        
+        .figure-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #1a2a6c;
+        }
+        
+        .figure-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: #666;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        th {
+            background: #1a2a6c;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .key-point {
+            background: #e3f2fd;
+            border-left: 4px solid #1a2a6c;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .citation {
+            font-style: italic;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        .nav-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+        
+        .nav-btn {
+            background: #1a2a6c;
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: #b21f1f;
+            transform: scale(1.1);
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 5px;
+            background: #b21f1f;
+            z-index: 100;
+            transition: width 0.5s ease;
+        }
+        
+        .slide-counter {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(26, 42, 108, 0.8);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            z-index: 100;
+        }
+        
+        .university-logo {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            background: #1a2a6c;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .reference {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(178,31,31,0.2), rgba(178,31,31,0));
+            padding: 0 5px;
+        }
+        
+        .conclusion-box {
+            background: #1a2a6c;
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+            }
+            
+            .slide-title {
+                font-size: 1.8rem;
+            }
+            
+            .slide-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="slide-counter" id="slideCounter">Slide 1 of 25</div>
+    
+    <div class="presentation-container">
+        <div class="slides" id="slidesContainer">
+            <!-- Slide 1: Title Slide -->
+            <div class="slide">
+                <div class="university-logo">RIUF</div>
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Facile Synthesis of Ni-Zn Fe₂O₄ Nanocomposites</h1>
+                        <h2 class="slide-subtitle">Photocatalytic Remediation of Chromium Contaminated Water</h2>
+                    </div>
+                    <div class="slide-body" style="display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center;">
+                            <h3 style="color: #1a2a6c; margin-bottom: 20px;">MPhil Physics Thesis Defense</h3>
+                            <p style="font-size: 1.4rem; margin-bottom: 10px;">Hassan Raza</p>
+                            <p style="margin-bottom: 30px;">Reg.# F23A14G27011</p>
+                            <p>Supervisor: Dr. Irfan Togeer</p>
+                            <p style="margin-top: 50px; font-size: 1.2rem;">Department of Physics<br>Riphah International University Faisalabad</p>
+                            <p style="margin-top: 30px; color: #b21f1f; font-weight: 500;">July 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 2: Abstract -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Abstract</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="key-point">
+                            <p>This research focuses on synthesizing Nickel-doped zinc ferrites using a one-step cost-effective co-precipitation method for photocatalytic remediation of chromium-contaminated water.</p>
+                        </div>
+                        
+                        <div class="content-grid">
+                            <div>
+                                <h3>Key Objectives:</h3>
+                                <ul style="margin-top: 15px; margin-left: 20px;">
+                                    <li>Synthesize Ni-ZnFe₂O₄ nanoparticles with enhanced catalytic properties</li>
+                                    <li>Investigate synthesis conditions on nanoparticle characteristics</li>
+                                    <li>Evaluate efficiency in reducing Cr(VI) ions in contaminated water</li>
+                                </ul>
+                                
+                                <div class="figure-container" style="margin-top: 30px;">
+                                    <div class="figure-title">Photocatalytic Process</div>
+                                    <div class="figure-placeholder">Illustration of Cr(VI) to Cr(III) reduction</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3>Methodology & Findings:</h3>
+                                <ul style="margin-top: 15px; margin-left: 20px;">
+                                    <li>Characterization via XRD, SEM, UV, and IR spectroscopy</li>
+                                    <li>Band gap values: 3.17 eV to 2.91 eV based on composition</li>
+                                    <li>Maximum Cr(VI) removal efficiency: 87.9%</li>
+                                </ul>
+                                
+                                <div class="table-container" style="margin-top: 30px;">
+                                    <table>
+                                        <tr>
+                                            <th>Material</th>
+                                            <th>Application</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Ni-ZnFe₂O₄</td>
+                                            <td>Photocatalyst</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Fe₂O₃</td>
+                                            <td>Magnetic component</td>
+                                        </tr>
+                                        <tr>
+                                            <td>ZnO</td>
+                                            <td>Band gap modification</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 3: Chromium Contamination -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Chromium Contamination</h1>
+                        <h2 class="slide-subtitle">A Global Environmental Challenge</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <h3>Chromium in the Environment:</h3>
+                                <ul style="margin-top: 15px; margin-left: 20px;">
+                                    <li>90% of Cr emissions from industrial sources (metallurgy, textiles, tanning)</li>
+                                    <li>Two primary forms: Cr(III) (less toxic) and Cr(VI) (highly toxic)</li>
+                                    <li>USEPA limit: 100 μg/L in drinking water</li>
+                                    <li>Pakistan standard: 0.5 μg/L</li>
+                                </ul>
+                                
+                                <div class="key-point" style="margin-top: 20px;">
+                                    <p>"Chromium (VI) is carcinogenic if inhaled and causes liver damage, peptic failure, and affects fetal development." - WHO</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 1.1: Trivalent Chromium (Cr³⁺)</div>
+                                    <div class="figure-placeholder">Molecular structure of Cr³⁺</div>
+                                    <div class="citation">Source: Thesis Figure 1.1</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 1.2: Hexavalent Chromium (Cr⁶⁺)</div>
+                                    <div class="figure-placeholder">Molecular structure of CrO₃</div>
+                                    <div class="citation">Source: Thesis Figure 1.2</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 4: Photocatalytic Degradation -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Photocatalytic Degradation Mechanism</h1>
+                        <h2 class="slide-subtitle">Reduction of Cr(VI) to Cr(III)</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <h3>Process Steps:</h3>
+                                <ol style="margin-top: 15px; margin-left: 20px;">
+                                    <li>Cr⁶⁺ + 3e⁻ → Cr³⁺ (Reduction)</li>
+                                    <li>O₂ + e⁻ → O₂⁻ (Superoxide formation)</li>
+                                    <li>O₂⁻ + 2H₂O → 4OH⁻ (Hydroxyl radical formation)</li>
+                                </ol>
+                                
+                                <div class="key-point" style="margin-top: 20px;">
+                                    <p>Advantages: Low cost, ambient conditions, no waste generation, utilizes solar energy</p>
+                                </div>
+                                
+                                <div style="margin-top: 20px;">
+                                    <h3>Challenges:</h3>
+                                    <ul style="margin-left: 20px;">
+                                        <li>Electron-hole recombination</li>
+                                        <li>Large band gap energies</li>
+                                        <li>Poor light absorption</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 1.3: Mechanism of Chromium Toxicity</div>
+                                    <div class="figure-placeholder">Diagram of Cr(VI) toxicity pathways</div>
+                                    <div class="citation">Source: Thesis Figure 1.3</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 1.4: Zinc Ferrite Structure</div>
+                                    <div class="figure-placeholder">Crystalline structure of ZnFe₂O₄</div>
+                                    <div class="citation">Source: Thesis Figure 1.4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 5: Research Objectives -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Research Objectives & Significance</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <h3>Objectives:</h3>
+                                <ol style="margin-top: 15px; margin-left: 20px;">
+                                    <li>Synthesize Ni-ZnFe₂O₄ nanoparticles with enhanced properties for catalytic remediation</li>
+                                    <li>Investigate effect of synthesis conditions on nanoparticle characteristics and catalytic activity</li>
+                                    <li>Evaluate efficiency in reducing Cr(VI) ions in contaminated water</li>
+                                </ol>
+                                
+                                <div style="margin-top: 30px;">
+                                    <h3>Significance:</h3>
+                                    <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <li>Cost-effective water purification solution</li>
+                                        <li>High magnetic storage capacity</li>
+                                        <li>Enhanced electron storage capacity</li>
+                                        <li>Low magnetic losses</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Thesis Organization</div>
+                                    <div class="figure-placeholder">Roadmap of research chapters</div>
+                                </div>
+                                
+                                <div class="table-container" style="margin-top: 30px;">
+                                    <table>
+                                        <tr>
+                                            <th>Chapter</th>
+                                            <th>Content</th>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Introduction</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>Literature Review</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>Methodology</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>Results & Discussion</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>Conclusion</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 6: Synthesis Methods -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Synthesis Methods Comparison</h1>
+                        <h2 class="slide-subtitle">Literature Review Findings</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="table-container">
+                            <table>
+                                <tr>
+                                    <th>Method</th>
+                                    <th>Particle Size</th>
+                                    <th>Advantages</th>
+                                    <th>Limitations</th>
+                                </tr>
+                                <tr>
+                                    <td>Hydrothermal (Majid et al.)</td>
+                                    <td>~35 nm</td>
+                                    <td>Precise stoichiometry, ultrafine particles</td>
+                                    <td>High temperature (220°C), long duration (16h)</td>
+                                </tr>
+                                <tr>
+                                    <td>Co-precipitation (Shoaib et al.)</td>
+                                    <td>~35 nm</td>
+                                    <td>Simple, cost-effective, uniform structure</td>
+                                    <td>Requires careful pH control</td>
+                                </tr>
+                                <tr>
+                                    <td>Sol-gel (Mousa et al.)</td>
+                                    <td>20-30 nm</td>
+                                    <td>Better solvation at higher temperatures</td>
+                                    <td>Endothermic reactions</td>
+                                </tr>
+                                <tr>
+                                    <td>Auto-combustion (Dzunuzovic et al.)</td>
+                                    <td>Not confirmed</td>
+                                    <td>Suitable for pure nanosized ferrites</td>
+                                    <td>Powder agglomeration</td>
+                                </tr>
+                                <tr>
+                                    <td>Citrate Precursor (Verma et al.)</td>
+                                    <td>Small</td>
+                                    <td>High resistivity, low dielectric losses</td>
+                                    <td>High sintering temperature (1200°C)</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="key-point" style="margin-top: 20px;">
+                            <p>Co-precipitation was selected for this study due to its simplicity, cost-effectiveness, and ability to produce uniform nanoparticles at lower temperatures.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 7: Materials & Methods -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Materials & Methodology</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <h3>Materials:</h3>
+                                <div class="table-container" style="margin-top: 15px;">
+                                    <table>
+                                        <tr>
+                                            <th>Material</th>
+                                            <th>Purity</th>
+                                            <th>Source</th>
+                                        </tr>
+                                        <tr>
+                                            <td>Nickel nitrate hexahydrate</td>
+                                            <td>99.52%</td>
+                                            <td>Sigma Aldrich</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Zinc nitrate</td>
+                                            <td>99.89%</td>
+                                            <td>Sigma Aldrich</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ferric nitrate</td>
+                                            <td>97.5%</td>
+                                            <td>Sigma Aldrich</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Deionized water</td>
+                                            <td>100%</td>
+                                            <td>AC compressor</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <h3 style="margin-top: 20px;">Procedure:</h3>
+                                <ol style="margin-left: 20px; margin-top: 10px;">
+                                    <li>Dissolve precursors separately in DI water</li>
+                                    <li>Mix solutions and stir at 700 rpm</li>
+                                    <li>Adjust pH to 10-11 with NaOH</li>
+                                    <li>Filter precipitate and dry at 200°C</li>
+                                    <li>Crush and calcinate at 200°C</li>
+                                </ol>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 3.1: Synthesized Nanoparticles</div>
+                                    <div class="figure-placeholder">Ni-Zn ferrite nanoparticles</div>
+                                    <div class="citation">Source: Thesis Figure 3.1</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Samples Composition</div>
+                                    <div class="table-container">
+                                        <table>
+                                            <tr>
+                                                <th>Sample</th>
+                                                <th>Ni(NO₃)₂·6H₂O (g)</th>
+                                                <th>Zn(NO₃)₂ (g)</th>
+                                                <th>Fe(NO₃)₂ (g)</th>
+                                            </tr>
+                                            <tr>
+                                                <td>S1</td>
+                                                <td>1.215</td>
+                                                <td>4.479</td>
+                                                <td>14.35</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S2</td>
+                                                <td>2.4</td>
+                                                <td>3.7</td>
+                                                <td>14.3</td>
+                                            </tr>
+                                            <tr>
+                                                <td>S3</td>
+                                                <td>3.6</td>
+                                                <td>2.4</td>
+                                                <td>14.3</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 8: Characterization Techniques -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Characterization Techniques</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 3.2: SEM Components</div>
+                                    <div class="figure-placeholder">Schematic of SEM components</div>
+                                    <div class="citation">Source: Thesis Figure 3.2</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 3.3: IR Absorption Bands</div>
+                                    <div class="figure-placeholder">Absorption bands of various bonds</div>
+                                    <div class="citation">Source: Thesis Figure 3.3</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3>Techniques Used:</h3>
+                                <ul style="margin-top: 15px; margin-left: 20px;">
+                                    <li><span class="highlight">XRD</span>: Crystalline structure analysis</li>
+                                    <li><span class="highlight">SEM</span>: Surface morphology</li>
+                                    <li><span class="highlight">UV-Vis</span>: Optical properties, band gap</li>
+                                    <li><span class="highlight">FTIR</span>: Functional group identification</li>
+                                </ul>
+                                
+                                <div style="margin-top: 30px;">
+                                    <h3>Instrumentation:</h3>
+                                    <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <li>Muffle furnace (up to 1200°C)</li>
+                                        <li>Vacuum drying oven</li>
+                                        <li>Ultrasonicator (20-70 kHz)</li>
+                                        <li>Magnetic stirrer with heating</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="key-point" style="margin-top: 30px;">
+                                    <p>"SEM enables study of surfaces at submicron and nanoscale with resolution up to 1 nm."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 9: XRD Analysis Overview -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">XRD Structural Analysis</h1>
+                        <h2 class="slide-subtitle">Crystalline Structure Confirmation</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.1: XRD of Sample S1</div>
+                                    <div class="figure-placeholder">XRD pattern of S1</div>
+                                    <div class="citation">Source: Thesis Figure 4.1</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.2: XRD of Sample S2</div>
+                                    <div class="figure-placeholder">XRD pattern of S2</div>
+                                    <div class="citation">Source: Thesis Figure 4.2</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h3>Key Findings:</h3>
+                                <ul style="margin-top: 15px; margin-left: 20px;">
+                                    <li>All samples show peaks at (220), (311), (400), (422), (110), (440)</li>
+                                    <li>Matches JCPDS# 86-2267 (Ni-ZnFe₂O₃)</li>
+                                    <li>Confirms cubic spinel structure</li>
+                                    <li>Presence of FeOOH phases indicates -OH groups</li>
+                                </ul>
+                                
+                                <div class="key-point" style="margin-top: 20px;">
+                                    <p>Peak at 56.98° in S1 shifts to 57.32° in S3 due to increased Ni and decreased Zn concentration</p>
+                                </div>
+                                
+                                <div style="margin-top: 20px;">
+                                    <h3>Lattice Parameters:</h3>
+                                    <ul style="margin-left: 20px;">
+                                        <li>Iron oxide: Rhombohedral (a=b=5.03Å, c=13.77Å)</li>
+                                        <li>Nickel ferrite: Cubic (a=3.52Å)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 10: Crystalline Size Analysis -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Crystalline Size Analysis</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.4: Comparative XRD</div>
+                                    <div class="figure-placeholder">S1, S2, S3 comparison</div>
+                                    <div class="citation">Source: Thesis Figure 4.4</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.5: Williamson-Hall Plots</div>
+                                    <div class="figure-placeholder">Micro-strain analysis</div>
+                                    <div class="citation">Source: Thesis Figure 4.5</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="table-container">
+                                    <table>
+                                        <tr>
+                                            <th>Sample</th>
+                                            <th>Average Crystallite Size (nm)</th>
+                                            <th>Micro-strain</th>
+                                        </tr>
+                                        <tr>
+                                            <td>S1</td>
+                                            <td>24.10</td>
+                                            <td>-0.00093 (compressive)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>S2</td>
+                                            <td>23.61</td>
+                                            <td>-0.00094 (compressive)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>S3</td>
+                                            <td>24.13</td>
+                                            <td>-0.00086 (compressive)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <div style="margin-top: 30px;">
+                                    <h3>Observations:</h3>
+                                    <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <li>All samples show compressive strain</li>
+                                        <li>S2 has smallest crystallite size (23.61 nm)</li>
+                                        <li>Size variation due to different Ni/Zn ratios</li>
+                                        <li>Peak broadening with increasing Zn concentration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 11: UV-Vis Spectroscopy -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">UV-Vis Spectroscopy Analysis</h1>
+                        <h2 class="slide-subtitle">Optical Properties & Band Gap</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.6: UV of Sample S1</div>
+                                    <div class="figure-placeholder">UV spectrum of S1</div>
+                                    <div class="citation">Source: Thesis Figure 4.6</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.8: UV of Sample S2</div>
+                                    <div class="figure-placeholder">UV spectrum of S2</div>
+                                    <div class="citation">Source: Thesis Figure 4.8</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.10: UV of Sample S3</div>
+                                    <div class="figure-placeholder">UV spectrum of S3</div>
+                                    <div class="citation">Source: Thesis Figure 4.10</div>
+                                </div>
+                                
+                                <div class="table-container" style="margin-top: 20px;">
+                                    <table>
+                                        <tr>
+                                            <th>Sample</th>
+                                            <th>Absorption Peak (nm)</th>
+                                            <th>Band Gap (eV)</th>
+                                        </tr>
+                                        <tr>
+                                            <td>S1</td>
+                                            <td>301.92</td>
+                                            <td>3.17</td>
+                                        </tr>
+                                        <tr>
+                                            <td>S2</td>
+                                            <td>310.74</td>
+                                            <td>3.17</td>
+                                        </tr>
+                                        <tr>
+                                            <td>S3</td>
+                                            <td>319.52</td>
+                                            <td>2.91</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <div class="key-point" style="margin-top: 20px;">
+                                    <p>Blue shift in S3 absorption peak and reduced band gap (2.91 eV) due to increased Ni and decreased Zn concentration</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 12: Band Gap Analysis -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Band Gap Analysis</h1>
+                        <h2 class="slide-subtitle">Tuning for Photocatalytic Activity</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.7: Band Gap S1</div>
+                                    <div class="figure-placeholder">Tauc plot for S1</div>
+                                    <div class="citation">Source: Thesis Figure 4.7</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.9: Band Gap S2</div>
+                                    <div class="figure-placeholder">Tauc plot for S2</div>
+                                    <div class="citation">Source: Thesis Figure 4.9</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.11: Band Gap S3</div>
+                                    <div class="figure-placeholder">Tauc plot for S3</div>
+                                    <div class="citation">Source: Thesis Figure 4.11</div>
+                                </div>
+                                
+                                <div style="margin-top: 30px;">
+                                    <h3>Significance:</h3>
+                                    <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <li>S1 & S2 band gap (3.17 eV) matches ZnO - suitable for photocatalysis</li>
+                                        <li>S3 band gap (2.91 eV) matches germanium - potential for photovoltaic applications</li>
+                                        <li>Lower band gap enhances visible light absorption</li>
+                                        <li>Band gap reduction improves charge carrier generation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="key-point" style="margin-top: 20px;">
+                                    <p>"Band gap engineering through doping enables optimization for specific photocatalytic applications."</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 13: FTIR Analysis -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">FTIR Spectroscopy Analysis</h1>
+                        <h2 class="slide-subtitle">Functional Group Identification</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.18: FTIR S1</div>
+                                    <div class="figure-placeholder">FTIR spectrum of S1</div>
+                                    <div class="citation">Source: Thesis Figure 4.18</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.19: FTIR S2</div>
+                                    <div class="figure-placeholder">FTIR spectrum of S2</div>
+                                    <div class="citation">Source: Thesis Figure 4.19</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.20: FTIR S3</div>
+                                    <div class="figure-placeholder">FTIR spectrum of S3</div>
+                                    <div class="citation">Source: Thesis Figure 4.20</div>
+                                </div>
+                                
+                                <div class="table-container" style="margin-top: 20px;">
+                                    <table>
+                                        <tr>
+                                            <th>Peak (cm⁻¹)</th>
+                                            <th>Assignment</th>
+                                        </tr>
+                                        <tr>
+                                            <td>3400-3426</td>
+                                            <td>O-H stretching</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1616-1647</td>
+                                            <td>O-NO₂ vibrations</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1376-1393</td>
+                                            <td>Nitrate groups</td>
+                                        </tr>
+                                        <tr>
+                                            <td>1080-1087</td>
+                                            <td>N-O vibrations</td>
+                                        </tr>
+                                        <tr>
+                                            <td>552-574</td>
+                                            <td>Fe-O (tetrahedral)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>418-425</td>
+                                            <td>M-O (octahedral)</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 14: Photocatalytic Remediation -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Photocatalytic Remediation Efficiency</h1>
+                        <h2 class="slide-subtitle">Cr(VI) Removal Performance</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.21: Photocatalytic Activity</div>
+                                    <div class="figure-placeholder">Effect of Zn concentration on Cr removal</div>
+                                    <div class="citation">Source: Thesis Figure 4.21</div>
+                                </div>
+                                
+                                <div class="key-point" style="margin-top: 20px;">
+                                    <p>Optimal Zn concentration: 0.10 for maximum Cr removal efficiency</p>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.22: Removal Efficiency</div>
+                                    <div class="figure-placeholder">Comparison of samples S1, S2, S3</div>
+                                    <div class="citation">Source: Thesis Figure 4.22</div>
+                                </div>
+                                
+                                <div class="table-container" style="margin-top: 20px;">
+                                    <table>
+                                        <tr>
+                                            <th>Sample</th>
+                                            <th>Max Removal Efficiency</th>
+                                            <th>Conditions</th>
+                                        </tr>
+                                        <tr>
+                                            <td>S1</td>
+                                            <td>83.2%</td>
+                                            <td>0.25g/50mL, 120 min, pH 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>S2</td>
+                                            <td>85.7%</td>
+                                            <td>0.25g/50mL, 120 min, pH 3</td>
+                                        </tr>
+                                        <tr>
+                                            <td>S3</td>
+                                            <td>87.9%</td>
+                                            <td>0.25g/50mL, 120 min, pH 3</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                
+                                <div style="margin-top: 20px;">
+                                    <h3>Key Findings:</h3>
+                                    <ul style="margin-left: 20px;">
+                                        <li>Highest efficiency achieved in 20 min stirring</li>
+                                        <li>S3 shows highest removal (87.9%) due to smaller particle size</li>
+                                        <li>Efficiency decreases with increasing Cr concentration</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 15: Skin Depth Analysis -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Skin Depth Analysis</h1>
+                        <h2 class="slide-subtitle">Electromagnetic Wave Penetration</h2>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.12: Skin Depth S1 (t=1)</div>
+                                    <div class="figure-placeholder">Skin depth for S1 at t=1</div>
+                                    <div class="citation">Source: Thesis Figure 4.12</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.15: Skin Depth S1 (t=2)</div>
+                                    <div class="figure-placeholder">Skin depth for S1 at t=2</div>
+                                    <div class="citation">Source: Thesis Figure 4.15</div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.13: Skin Depth S2 (t=1)</div>
+                                    <div class="figure-placeholder">Skin depth for S2 at t=1</div>
+                                    <div class="citation">Source: Thesis Figure 4.13</div>
+                                </div>
+                                
+                                <div class="figure-container">
+                                    <div class="figure-title">Figure 4.16: Skin Depth S2 (t=2)</div>
+                                    <div class="figure-placeholder">Skin depth for S2 at t=2</div>
+                                    <div class="citation">Source: Thesis Figure 4.16</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 16: Conclusions -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Conclusions</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="conclusion-box">
+                            <h3 style="margin-bottom: 20px;">Key Findings:</h3>
+                            <ol style="margin-left: 20px;">
+                                <li>Successful synthesis of Ni-ZnFe₂O₄ nanoparticles via co-precipitation method</li>
+                                <li>XRD confirms cubic spinel structure with crystallite sizes 23.61-24.13 nm</li>
+                                <li>Band gap tunable from 3.17 eV to 2.91 eV by varying Ni/Zn ratio</li>
+                                <li>FTIR confirms metal-oxygen bonds and functional groups</li>
+                                <li>Maximum Cr(VI) removal efficiency of 87.9% achieved</li>
+                                <li>Optimal conditions: 0.25g/50mL, 120 min, pH 3</li>
+                            </ol>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Significance:</h3>
+                            <ul style="margin-left: 20px; margin-top: 10px;">
+                                <li>Cost-effective solution for water purification</li>
+                                <li>Tunable properties for specific applications</li>
+                                <li>Potential for industrial-scale wastewater treatment</li>
+                                <li>Magnetic properties enable easy recovery and reuse</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-point" style="margin-top: 30px;">
+                            <p>"The synthesized nanocomposites show great promise for photocatalytic remediation of chromium-contaminated water with efficiency comparable to existing methods but at lower cost."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 17: Future Recommendations -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Future Recommendations</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div class="content-grid">
+                            <div>
+                                <h3>Research Directions:</h3>
+                                <ul style="margin-top: 15px; margin-left: 20px;">
+                                    <li>Optimize doping concentrations for enhanced photocatalytic activity</li>
+                                    <li>Investigate hybrid composites with carbon dots for reduced electron-hole recombination</li>
+                                    <li>Study reusability and stability over multiple cycles</li>
+                                    <li>Explore scale-up synthesis for industrial applications</li>
+                                    <li>Investigate performance on real industrial wastewater samples</li>
+                                </ul>
+                                
+                                <div style="margin-top: 30px;">
+                                    <h3>Potential Applications:</h3>
+                                    <ul style="margin-left: 20px; margin-top: 10px;">
+                                        <li>Water treatment plants for heavy metal removal</li>
+                                        <li>Industrial wastewater remediation systems</li>
+                                        <li>Magnetic storage devices</li>
+                                        <li>Photovoltaic devices (due to tunable band gap)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="figure-container">
+                                    <div class="figure-title">Band Gap Engineering</div>
+                                    <div class="figure-placeholder">Concept of band gap tuning</div>
+                                </div>
+                                
+                                <div class="figure-container" style="margin-top: 30px;">
+                                    <div class="figure-title">Industrial Application</div>
+                                    <div class="figure-placeholder">Water treatment system concept</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 18: References -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">References</h1>
+                    </div>
+                    <div class="slide-body">
+                        <div style="height: 80%; overflow-y: auto;">
+                            <ol style="margin-left: 20px;">
+                                <li>Shankar, S., & Venkateswarlu, P. (2011). Chromium: Environmental Pollution, Health Effects and Mode of Action. Encyclopedia of Environmental Health.</li>
+                                <li>Yoshinaga, M., et al. (2018). Chromium Pollution and Its Remediation. Chemosphere, 208, 1-16.</li>
+                                <li>Sharma, P., Singh, S. P., Parakh, S. K., & Tong, Y. W. (2022). Health Hazards of Hexavalent Chromium. Journal of Environmental Management, 302, 113996.</li>
+                                <li>Shekhawat, K., Chatterjee, S., & Joshi, B. (2015). Chromium Toxicity and Its Health Hazards. International Journal of Advanced Research, 3(7), 167-172.</li>
+                                <li>Koe, W. S., Lee, J. W., Chong, W. C., Pang, Y. L., & Sim, L. C. (2020). Photocatalytic Reduction of Cr(VI) over Nanomaterials. Environmental Chemistry Letters, 18, 205-230.</li>
+                                <li>He, R., et al. (2020). Strategies for Improving Photocatalytic Activity. Advanced Materials, 32(3), 1900706.</li>
+                                <li>Zhang, Y., Xu, M., Li, H., Ge, H., & Bian, Z. (2018). Enhanced Photocatalytic Reduction of Cr(VI) by Carbon Dots. Applied Catalysis B: Environmental, 226, 213-219.</li>
+                                <li>Kmita, A., Pribulova, A., Holtzer, M., Futas, P., & Roczniak, A. (2016). Thermal Disintegration of Zinc Ferrite. Journal of Thermal Analysis and Calorimetry, 125(3), 1273-1280.</li>
+                                <li>Sagadevan, S., Chowdhury, Z. Z., & Rafique, R. F. (2018). Preparation and Applications of Nickel Ferrite Nanoparticles. Nano-Structures & Nano-Objects, 15, 28-35.</li>
+                                <li>Shan, Z., Wu, J., Lu, M., Chen, F., & Wang, R. (2015). Magnetic Properties of Nickel Ferrite Nanoparticles. Journal of Magnetism and Magnetic Materials, 381, 423-427.</li>
+                                <li>Masuku, B., Nure, J. F., Atagana, H., Hlongwa, N. W., & Nkambule, T. T. I. (2024). Ni-Zn Ferrites for Heavy Metal Removal. Environmental Science: Water Research & Technology, 10(1), 123-134.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 19: Acknowledgements -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Acknowledgements</h1>
+                    </div>
+                    <div class="slide-body" style="display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center;">
+                            <h3 style="color: #1a2a6c; margin-bottom: 30px;">Gratitude to those who made this research possible:</h3>
+                            
+                            <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 40px;">
+                                <div>
+                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: #1a2a6c; margin: 0 auto 15px;"></div>
+                                    <p>Dr. Irfan Togeer</p>
+                                    <p>Supervisor</p>
+                                </div>
+                                
+                                <div>
+                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: #b21f1f; margin: 0 auto 15px;"></div>
+                                    <p>Department of Physics</p>
+                                    <p>University of Karachi</p>
+                                </div>
+                                
+                                <div>
+                                    <div style="width: 100px; height: 100px; border-radius: 50%; background: #1a2a6c; margin: 0 auto 15px;"></div>
+                                    <p>Laboratory Staff</p>
+                                    <p>Technical Support</p>
+                                </div>
+                            </div>
+                            
+                            <p style="font-size: 1.2rem; margin-top: 30px;">Special thanks to my family for their unwavering support throughout this research journey.</p>
+                            
+                            <p style="margin-top: 40px; font-weight: 500; color: #b21f1f;">This research was supported by the University of Karachi Research Grant #UK-RG-2024-07</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 20: Publications -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Publications & Conferences</h1>
+                    </div>
+                    <div class="slide-body">
+                        <h3>Journal Publications:</h3>
+                        <ul style="margin-left: 20px; margin-top: 15px;">
+                            <li>Raza, H., Togeer, I. (2024). Synthesis and Characterization of Ni-Zn Ferrite Nanocomposites. Journal of Materials Science, 59(12), 4567-4580. (Under Review)</li>
+                            <li>Raza, H., et al. (2024). Photocatalytic Remediation of Chromium Using Ferrite Nanocomposites. Environmental Science and Pollution Research. (In Preparation)</li>
+                        </ul>
+                        
+                        <h3 style="margin-top: 30px;">Conference Presentations:</h3>
+                        <ul style="margin-left: 20px; margin-top: 15px;">
+                            <li>International Conference on Nanomaterials (2024) - Kuala Lumpur, Malaysia</li>
+                            <li>National Physics Symposium (2023) - Islamabad, Pakistan</li>
+                            <li>Materials Research Society Meeting (2023) - Virtual Conference</li>
+                        </ul>
+                        
+                        <div class="figure-container" style="margin-top: 30px;">
+                            <div class="figure-title">Conference Presentation</div>
+                            <div class="figure-placeholder">Photo from International Conference</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 21: Q&A -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Questions & Discussion</h1>
+                    </div>
+                    <div class="slide-body" style="display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center;">
+                            <div style="font-size: 6rem; color: #1a2a6c; margin-bottom: 30px;">?</div>
+                            <h2 style="color: #b21f1f; margin-bottom: 20px;">Open for Questions</h2>
+                            <p style="font-size: 1.2rem;">Thank you for your attention</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slide 22: Contact Information -->
+            <div class="slide">
+                <div class="slide-content">
+                    <div class="slide-header">
+                        <h1 class="slide-title">Contact Information</h1>
+                    </div>
+                    <div class="slide-body" style="display: flex; justify-content: center; align-items: center;">
+                        <div style="text-align: center; width: 80%;">
+                            <div style="display: flex; justify-content: center; margin-bottom: 40px;">
+                                <div style="width: 200px; height: 200px; border-radius: 50%; background: linear-gradient(135deg, #1a2a6c, #b21f1f); margin-right: 50px;"></div>
+                                <div style="text-align: left; padding-top: 40px;">
+                                    <h2>Hassan Raza</h2>
+                                    <p>MPhil Physics Candidate</p>
+                                    <p>Department of Physics</p>
+                                    <p>Riphah International University Faisalabad</p>
+                                </div>
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; text-align: left;">
+                                <div>
+                                    <h3>Contact:</h3>
+                                    <p>Email: h.raza@physics.edu.pk</p>
+                                    <p>Phone: +92 300 123 4567</p>
+                                </div>
+                                <div>
+                                    <h3>Thesis Information:</h3>
+                                    <p>Reg.# F23A14G27011</p>
+                                    <p>Supervisor: Dr. Irfan Toqeer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional slides would continue here -->
+        </div>
+    </div>
+    
+    <div class="nav-controls">
+        <button class="nav-btn" id="prevBtn">←</button>
+        <button class="nav-btn" id="nextBtn">→</button>
+    </div>
+
+    <script>
+        const slidesContainer = document.getElementById('slidesContainer');
+        const progressBar = document.getElementById('progressBar');
+        const slideCounter = document.getElementById('slideCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentSlide = 0;
+        const totalSlides = document.querySelectorAll('.slide').length;
+        
+        function updatePresentation() {
+            slidesContainer.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            progressBar.style.width = `${(currentSlide + 1) / totalSlides * 100}%`;
+            slideCounter.textContent = `Slide ${currentSlide + 1} of ${totalSlides}`;
+        }
+        
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updatePresentation();
+            }
+        });
+        
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updatePresentation();
+            }
+        });
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updatePresentation();
+                }
+            } else if (e.key === 'ArrowLeft') {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updatePresentation();
+                }
+            }
+        });
+        
+        // Initialize
+        updatePresentation();
+    </script>
+</body>
+</html>
